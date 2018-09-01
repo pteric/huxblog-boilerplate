@@ -1,12 +1,12 @@
 # Site settings
-title: Your Blog
-SEOTitle: 你的博客 | Your Blog
+title: PengTuo 的博客
+SEOTitle: 彭拓的博客 | PengTuo Blog
 header-img: img/home-bg.jpg
-email: huxpro@gmail.com
-description: ""
+email: peng_tuo@foxmail.com
+description: "日拱一卒，功不唐捐"
 keyword: ""
-url: "http://huangxuan.me"              # your host, for absolute URL
-baseurl: "/huxblog-boilerplate"         # for example, '/blog' if your blog hosted on 'host/blog'
+url: "http://www.pengtuo.tech"              # your host, for absolute URL
+baseurl: ""         # for example, '/blog' if your blog hosted on 'host/blog'
 
 
 
