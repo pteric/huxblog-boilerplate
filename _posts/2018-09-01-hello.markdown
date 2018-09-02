@@ -1,0 +1,42 @@
+---
+layout:     post
+title:      "Welcome to PeTu Blog"
+subtitle:   " \"Hello World, Hello Blog\""
+date:       2018-09-02 12:00:00
+author:     "PeTu"
+header-img: "img/post-bg-2015.jpg"
+tags:
+    - 生活
+---
+
+> “Yeah It's on. ”
+
+## Hello
+
+大家好，欢迎来到 PeTu 的博客。
+
+本人从一年前就想有一个可以展示自己文章以及个性的个人博客网站，先前曾用 `PHP` 的后端框架 [Laravel](https://laravel.com) + 拼凑的前端主题实现了第一个个人博客网站，前后端全部由本人独自完成，但是因为技术有限，不太满意最后的效果，用了小半年就抛弃了。
+
+初学 Laravel 的童鞋可以考虑参考鄙人的项目代码[Blog-Laravel](https://github.com/pteric/Blog-Laravel)
+
+后来第二个个人博客改成了 `Python` 的后端框架 [Django](https://www.djangoproject.com) + Django前端模板系统功能实现，这次实现的更轻量，反应速度与前端主题也很满意，但是因为学业任务加上拖延症（好吧，其实就是因为拖延症），迟迟没有将其部署到服务器上，只作为个项目存储了起来。
+
+初学 Django 的童鞋可以考虑参考鄙人的项目代码[Blog-Django](https://github.com/pteric/Blog-Django)
+
+后来方向转向了数据科学与大数据研发，所以不打算深入研究网站的研发了，需要的是一个能让我写博客的网站即好，于是将目光瞄向了 Github Page。
+
+这个博客是由 [GitHub Pages](https://pages.github.com/) + [Jekyll](http://jekyllrb.com/) 搭建起来的静态博客。
+
+其优点有：
+
+* **Markdown** 带来的优雅写作体验
+* 非常熟悉的 Git workflow ，**Git Commit 即 Blog Post**
+* 利用 GitHub Pages 的域名和免费无限空间，不用自己折腾主机
+	* 如果需要自定义域名，也只需要简单改改 DNS 加个 CNAME 就好了
+* Jekyll 的自定制非常容易，基本就是个模版引擎
+
+---
+
+大的 Jekyll 主题是依据的 Clean Blog。但是不具有标签功能，于是便有了大神 [Huxpro](https://github.com/Huxpro) 在这个主题的基础上添加了标签功能。而我的博客就是在 fork 的 [Huxpro 的主题模板](https://github.com/Huxpro/huxblog-boilerplate)进行修改的。
+
+OK，这个博客方便搭建方便且不用管理服务器和后台，可以将心思都放在博文上了，打算定位长期博客了。
