@@ -16,7 +16,7 @@ header-img: "img/about-bg.jpg"
         <blockquote>
                 幸运之神的降临，往往只是因为你多看了一眼，多想了一下，多走了一步
         </blockquote>
-        你好，我是彭拓，PeTu，毕业于北京邮电大学<br>
+        你好，我是PeTu，毕业于北京邮电大学<br>
         <br>乐于沉浸式敲代码，主大数据研发，副数据挖掘，副副机器学习<br>
         <br>健身多年，喜欢街舞，喜欢拳击<br>
         <br>有可爱小女友一枚，闲时喜欢带她逛吃逛吃<br>
@@ -27,8 +27,11 @@ header-img: "img/about-bg.jpg"
         <a href="http://www.jianshu.com/u/3436fbbd1afc" target="_blank">简书</a>，
         如果你愿意可以关注一下<br>
         <br>博文第一时间是在本博客更新，同步至<a href="https://juejin.im/user/57d56ce6816dfa0054492f4a" target="_blank">掘金</a>、简书<br>
+
+        <h3>联系方式：</h3>
+        - Emial: peng_tuo@foxmail.com
         <br><br>
-        <br>
+        <strong> 欢 迎 互 加 友 链 哈 </strong>
 
 </div>
 
@@ -69,66 +72,23 @@ header-img: "img/about-bg.jpg"
     onLanChange(0);
 </script>
 
+<!-- 添加 gitalk 评论系统 -->
+{% if site.gitalk.enable %}
+<section class="post-footer-item comment">
+    <div id="disqus_thread"></div>
+    <div id="gitalk_container"></div>
+</section>
 
-
-{% if site.duoshuo_username %}
-<!-- 多说评论框 start -->
-<div class="comment">
-    <div class="ds-thread"
-    {% if site.duoshuo_username == "huxblog" %}
-        data-thread-id="1187623191091085319"
-    {% else %}
-        data-thread-key="{{site.duoshuo_username}}/about"
-    {% endif %}
-
-    data-title="{{page.title}}"
-    data-url="{{site.url}}/about/"></div>
-</div>
-<!-- 多说评论框 end -->
-
-<!-- Duoshuo hacking -->
-<input id="dsUser" type="hidden" value="{{site.duoshuo_username}}"  />
-
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-    // dynamic User hacking by Hux
-    var _user = document.getElementById('dsUser').value;
-    // duoshuo comment query.
-    var duoshuoQuery = {short_name: _user };
-    (function() {
-        var ds = document.createElement('script');
-        ds.type = 'text/javascript';ds.async = true;
-        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-        ds.charset = 'UTF-8';
-        (document.getElementsByTagName('head')[0]
-         || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-</script>
-<!-- 多说公共JS代码 end -->
-{% endif %}
-
-
-{% if site.disqus_username %}
-<!-- disqus 评论框 start -->
-<div class="comment">
-    <div id="disqus_thread" class="disqus-thread">
-
-    </div>
-</div>
-<!-- disqus 评论框 end -->
-
-<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES * * */
-    var disqus_shortname = "{{site.disqus_username}}";
-    var disqus_identifier = "{{site.disqus_username}}/{{page.url}}";
-    var disqus_url = "{{site.url}}{{page.url}}";
-
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<!-- disqus 公共JS代码 end -->
+<script>
+var gitalk = new Gitalk({
+    clientID: '{{site.gitalk.ClientID}}',
+    clientSecret: '{{site.gitalk.ClientSecret}}',
+    repo: '{{site.gitalk.repo}}',
+    owner: '{{site.gitalk.githubID}}',
+    admin: '{{site.gitalk.adminUser}}',
+    id: location.pathname,     
+    distractionFreeMode: '{{site.gitalk.distractionFreeMode}}'
+})
+gitalk.render('gitalk_container')
+  </script>
 {% endif %}
