@@ -10,6 +10,9 @@ tags:
     - Hadoop
 ---
 
+* TOC
+{:toc}
+
 `Hadoop` 生态是一个庞大的、功能齐全的生态，但是围绕的还是名为 `Hadoop` 的分布式系统基础架构，其核心组件由四个部分组成，分别是：`Common`、`HDFS`、`MapReduce` 以及 `YARN`。
 1. `Common` 是 `Hadoop` 架构的通用组件；
 2. `HDFS` 是 `Hadoop` 的分布式文件存储系统；
@@ -61,12 +64,12 @@ HDFS(The Hadoop Distributed File System)，是被设计成适合运行在通用�
 
 > 还有一个节点图中没有显示，叫作 `Secondary Namenode`，是辅助后台程序，主要负责与 `NameNode` 进行通信，定期保存 `HDFS` 元数据的快照及备份其他 `NameNode` 中的内容，日常 `Standby`，当 `NameNode` 故障时顶替 `NameNode` 使用。
 
-#### NameNode
+#### 3.1 NameNode
 `NameNode` 是管理文件系统命名空间的主服务器，用于管理客户端对文件的访问，执行文件系统命名空间操作，如打开，关闭和重命名文件和目录。它还确定了`Block` 到 `DataNode` 的映射。
 
 `NameNode` 做着有关块复制的所有决定，它定期从群集中的每个 `DataNode` 接收 `Heartbeat` 和 `Blockreport`。收到 `Heartbeat` 意味着 `DataNode`正常运行，`Blockreport` 包含 `DataNode` 上所有块的列表。
 
-#### DataNode
+#### 3.2 DataNode
 `DataNode` 通常是群集中每个节点一个，用于存储数据，负责提供来自文件系统客户端的读写请求。并且还会根据 `NameNode` 的指令执行块创建，删除和复制。
 
 ## 四、HDFS文件系统命名空间及元数据
@@ -78,7 +81,7 @@ HDFS(The Hadoop Distributed File System)，是被设计成适合运行在通用�
 
 而整个文件系统命名空间（包括块到文件和文件系统属性的映射）存储在名为 `FsImage` 的文件中。 `FsImage` 也作为文件存储在 `NameNode` 的本地文件系统中。
 
-### 元数据的持久化
+### 4.1 元数据的持久化
 `NameNode` 在整个内存中保存整个文件系统命名空间和文件的数据块映射。当 `NameNode` 启动，或者检查点由可配置的阈值触发时，它从磁盘读取 `FsImage` 和 `EditLog`，并先将 `FsImage` 中的文件系统元数据信息加载到内存，然后把 `EditLog` 中的所有事务应用到内存中的 `FsImage`，最后将此新版本同步到磁盘上的 `FsImage`。然后它可以截断旧的 `EditLog`，因为它的事务已应用于持久性 `FsImage`。此过程称为检查点。
 
 检查点的目的是通过获取文件系统元数据的快照并将其保存到 `FsImage` 来确保 `HDFS` 具有文件系统元数据的一致视图。尽管直接从内存中读取 `FsImage` 很高效，但直接对 `FsImage` 进行增量编辑效率不高。我们不会修改每个编辑的 `FsImage`，而是在 `Editlog` 中保留编辑内容。
@@ -94,7 +97,7 @@ HDFS(The Hadoop Distributed File System)，是被设计成适合运行在通用�
 
 解释：如图所示，`part-0` 文件复制因子为`r:2`，其拆分的数据块号有`{1,3}`，所以 1 号数据块在第1，第3个 `DataNode` 上，3 号数据块在第5，第6个`DataNode`上；`part-1`文件解释同理。而这些信息都存储在 `NameNode` 中。
 
-### HDFS 副本存放策略
+### 5.1 HDFS 副本存放策略
 刚刚只是简单的介绍了图里的信息，实际 `HDFS` 副本放置策略是一个值得研究的课题，因为这切实关系到 `HDFS` 的可依赖性与表现，并且经过优化的副本放置策略也使得 `HDFS` 相比其他分布式文件系统具有优势。
 
 在大部分的实际案例中，当复制因子是 `r = 3` 时，`HDFS` 的放置策略是将一个复制品放置到写入器操作的 `DataNode`中，第二个复制品放置到另一个远程机架上的一个节点中，然后最后一个复制品则放置同一个远程机架的不同物理节点中。

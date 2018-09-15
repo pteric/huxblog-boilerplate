@@ -11,6 +11,9 @@ tags:
 
 > “Yeah It's on. ”
 
+* TOC
+{:toc}
+
 ## Hello
 
 大家好，欢迎来到 PeTu 的博客。
