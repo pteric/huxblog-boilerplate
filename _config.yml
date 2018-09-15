@@ -85,3 +85,14 @@ friends: [
         href: "http://huangxuan.me"
     }
 ]
+
+comments: true
+
+gitalk:
+    enable: true #是否开启
+    githubID: pteric #你的Github用户名
+    repo: pteric.github.io #Github仓库名称
+    ClientID: d9b1d23f344173cc2656 #创建的Application ClientID
+    ClientSecret: 34ddd5b4744d72ef6c59bac27c9c1c25c65f5546 #创建的Application ClientSecret
+    adminUser: pteric # 评论初始化账户(GitHub ID)
+    distractionFreeMode: true # 是否开启分心自由模式 也就是免打扰
