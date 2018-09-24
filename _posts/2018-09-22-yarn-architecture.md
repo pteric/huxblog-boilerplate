@@ -139,10 +139,13 @@ Application在Yarn中的执行过程，整个执行过程可以总结为三步�
 8. 一旦应用程序执行完成并且所有相关工作也已经完成，ApplicationMaster 向 ResourceManager 取消注册然后关闭，用到所有的 Container 也归还给系统。
 
 精简版的：
-- 步骤1：用户将应用程序提交到ResourceManager上；
-- 步骤2：ResourceManager为应用程序ApplicationMaster申请资源，并与某个NodeManager通信，以启动ApplicationMaster；
-- 步骤3：ApplicationMaster与ResourceManager通信，为内部要执行的任务申请资源，一旦得到资源后，将于NodeManager通信，以启动对应的任务；
-- 步骤4：所有任务运行完成后，ApplicationMaster向ResourceManager注销，整个应用程序运行结束。
+
+![](http://omqlv3air.bkt.clouddn.com/blog/2018-09-24-021110.jpg)
+
+- 步骤1：用户将应用程序提交到 ResourceManager 上；
+- 步骤2：ResourceManager 为应用程序 ApplicationMaster 申请资源，并与某个 NodeManager 通信启动第一个 Container，以启动ApplicationMaster；
+- 步骤3：ApplicationMaster 与 ResourceManager 注册进行通信，为内部要执行的任务申请资源，一旦得到资源后，将于 NodeManager 通信，以启动对应的 Task；
+- 步骤4：所有任务运行完成后，ApplicationMaster 向 ResourceManager 注销，整个应用程序运行结束。
 
 ## 四、Resource Request 及 Container
 
@@ -169,7 +172,7 @@ ApplicationMaster在得到这些Containers后，还需要与分配Container所�
 
 ## 五、YARN 配置
 
-1.修改文件 YARN 配置文件
+a). 修改文件 YARN 配置文件
 
 `etc/hadoop/mapred-site.xml`:
 
@@ -193,8 +196,27 @@ ApplicationMaster在得到这些Containers后，还需要与分配Container所�
 </configuration>
 ```
 
-2.启动 ResourceManager 和 NodeManager  `sbin/start-yarn.sh`，停止 RM 和 NM `sbin/stop-yarn.sh`
+b). 启动 ResourceManager 和 NodeManager  `sbin/start-yarn.sh`，停止 RM 和 NM `sbin/stop-yarn.sh`
 
-3.验证：可通过 `JPS` 命令来检查是否启动 YARN
+c). 验证：可通过 `JPS` 命令来检查是否启动 YARN
+
+![](http://omqlv3air.bkt.clouddn.com/blog/2018-09-24-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-09-24%20%E4%B8%8A%E5%8D%889.52.28.png)
+
+当显示上图时，就表示 YARN 成功启动了
+
+d). 向 YARN 以 jar 包的方式提交作业，假设 jar 包为 `example.jar` 格式为：
+```shell
+hadoop jar jar包名 应用名 输入路径 输出路径
+```
+例如：
+```shell
+hadoop jar example.jar wordccount /input/hello.txt /output/helloCount.txt
+```
 
 
+## 参考
+[1] [https://blog.csdn.net/Mr_HHH/article/details/81127373](https://blog.csdn.net/Mr_HHH/article/details/81127373)
+
+[2] [http://hadoop.apache.org/docs/stable/hadoop-yarn/hadoop-yarn-site/YARN.html](http://hadoop.apache.org/docs/stable/hadoop-yarn/hadoop-yarn-site/YARN.html)
+
+[3] [https://www.ibm.com/developerworks/library/bd-yarn-intro/index.html](https://www.ibm.com/developerworks/library/bd-yarn-intro/index.html)
