@@ -11,6 +11,7 @@ layout: default
     header.intro-header{
         background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')
     }
+    .menu_line{ width:2px; background-image: url("../img/line.gif"); }
 </style>
 <header class="intro-header" >
     <div class="container">
@@ -29,7 +30,7 @@ layout: default
                     {% comment %} if page.subtitle {% endcomment %}
                     <h2 class="subheading">{{ page.subtitle }}</h2>
                     {% comment %} endif {% endcomment %}
-                    <span class="meta" id="busuanzi_container_page_pv">- Posted by {% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %} on {{ page.date | date: "%B %-d, %Y" }}  | - Total <span id="busuanzi_value_page_pv"></span> views</span>
+                    <span class="meta" id="busuanzi_container_page_pv"> <i class="fa fa-user"></i>&nbsp;&nbsp;{% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %}&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-calendar"></i>&nbsp;&nbsp;{{ page.date | date: "%B %-d, %Y" }}&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span> views</span>
                 </div>
             </div>
         </div>
