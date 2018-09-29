@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Hadoop入门（一）之Hadoop伪分布式环境搭建"
+title:      "Hadoop入门（一）之 Hadoop 伪分布式环境搭建"
 subtitle:   "Hadoop 挖坑第一篇"
 date:       2018-09-04
 author:     "PengTuo"
