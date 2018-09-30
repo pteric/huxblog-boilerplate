@@ -4,6 +4,7 @@ title:      "Hadoop入门（一）之 Hadoop 伪分布式环境搭建"
 subtitle:   "Hadoop 挖坑第一篇"
 date:       2018-09-04
 author:     "PengTuo"
+catalog:    true
 header-img: "img/post-bg-hadoop-01.jpg"
 tags:
     - 大数据研发
@@ -42,7 +43,7 @@ wget --no-check-certificate -c --header "Cookie: oraclelicense=accept-secureback
 > 本人的建议文件管理方式，将这些下载都存储到 `~/downloads/` 文件夹里，然后解压到 `~/app/` 文件里
 
 ## 2. 环境配置
-### 2.1 配置 Java
+#### 2.1 配置 Java
 执行解压命令
 
 ```shell
@@ -58,7 +59,7 @@ export PATH=$JAVA_HOME/bin:$PATH
 
 保存退出后，执行 `source .profile` 让配置生效
 
-### 2.2 配置 ssh 免密登录
+#### 2.2 配置 ssh 免密登录
 HDFS 是由一个 `NameNode`，一个 `SecodaryNameNode`，以及 n 个 `DataNode` 组成，当有多台物理机时，`NameNode` 与 `DataNode` 是分布在不同的物理机上，部署则需要 `NameNode` 能够直接与 `DataNode` 进行通信，通信方式之一就是使用 SSH ([Secure Shell](https://baike.baidu.com/item/Secure%20Shell))，所以需要在之间设置免密登录
 
 因为本次是 Hadoop 伪分布式搭建，本机同时充当 `NameNode` 与 `DataNode` 角色，所以只需要配置一个本机的 SSH 免密登录
@@ -70,7 +71,7 @@ cp ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys
 ```
 即可
 
-### 2.3 修改 hadoop 配置文件
+#### 2.3 修改 hadoop 配置文件
 解压 hadoop 压缩包：
 
 ```shell
@@ -118,7 +119,7 @@ export JAVA_HOME= 你的 java home 路径
 </configuration>
 ```
 
-### 2.4 启动 hdfs
+#### 2.4 启动 hdfs
 首先格式化文件系统
 
 > 注意：仅第一次执行即可，不要重复执行
