@@ -95,6 +95,7 @@ layout: default
 </article>
 
 <!-- 添加 gitalk 评论系统 -->
+<script src="/js/md5.min.js"></script>
 {% if site.gitalk.enable %}
 <script>
 var gitalk = new Gitalk({
@@ -103,11 +104,11 @@ var gitalk = new Gitalk({
     repo: '{{site.gitalk.repo}}',
     owner: '{{site.gitalk.githubID}}',
     admin: '{{site.gitalk.adminUser}}',
-    id: location.pathname,     
+    id: md5(location.pathname),   
     distractionFreeMode: '{{site.gitalk.distractionFreeMode}}'
 })
 gitalk.render('gitalk_container')
-  </script>
+</script>
 {% endif %}
 
 {% if site.anchorjs %}
