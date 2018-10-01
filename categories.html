@@ -1,6 +1,7 @@
 ---
-title: Tags
+title: Categories
 layout: default
+order: 1
 description: keep hungry keep foolish
 header-img: "img/tag-bg.jpg"
 ---
@@ -23,34 +24,38 @@ header-img: "img/tag-bg.jpg"
 <div class="container">
 	<div class="row">
 		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <!-- 标签云 -->
+            <!-- 类云 -->
 			<div id='tag_cloud' class="tags">
-				{% for tag in site.tags %}
+				{% for tag in site.categories %}
 				<a href="#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">{{ tag[0] }}</a>
 				{% endfor %}
 			</div>
 
-            <!-- 标签列表 -->
-			{% for tag in site.tags %}
+            <!-- 类列表 -->
+			{% for tag in site.categories %}
 			<div class="one-tag-list">
-			  	<span class="fa fa-tag listing-seperator" id="{{ tag[0] }}">
-                    </span>{{ tag[0] }}</span>
+			  	<span class="fa fa-archive listing-seperator" id="{{ tag[0] }}">
+                    {{ tag[0] }}</span>
                 </span>
 				{% for post in tag[1] %}
+				  <!-- <li class="listing-item">
+				  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+				  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+				  </li> -->
 				 <div class="post-preview">
 				    <a href="{{ post.url | prepend: site.baseurl }}">
 				        <h2 class="post-title">
                             <i class="fa fa-circle-thin"></i>&nbsp;&nbsp;&nbsp;{{ post.title }}
 				        </h2>
-				        {% if post.subtitle %}
+				        <!-- {% if post.subtitle %}
 				        <h3 class="post-subtitle">
 				            {{ post.subtitle }}
 				        </h3>
-				        {% endif %}
+				        {% endif %} -->
 				    </a>
-				    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+				    <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p>
 				</div>
-				<hr>
+				<!-- <hr> -->
 				{% endfor %}
 			</div>
 			{% endfor %}

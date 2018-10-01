@@ -6,8 +6,9 @@ date:       2018-09-02
 author:     "PeTu"
 catalog:    true
 header-img: "img/post-bg-2015.jpg"
+categories: Life
 tags:
-    - 生活
+    - Life
 ---
 
 > “Yeah It's on. ”

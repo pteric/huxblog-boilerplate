@@ -6,13 +6,15 @@ date:       2018-09-22
 author:     "PengTuo"
 catalog:    true
 header-img: "img/post-bg-hadoop-03.jpg"
+categories: 大数据研发
 tags:
-    - 大数据研发
     - Hadoop
+    - YARN
 ---
 
 > 因为网上关于 YARN 的讲解比较多且比较详细，本文是对网络内容的整理
 
+本文概览：
 * TOC
 {:toc}
 

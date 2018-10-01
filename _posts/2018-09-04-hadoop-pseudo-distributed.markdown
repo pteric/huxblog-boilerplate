@@ -6,11 +6,13 @@ date:       2018-09-04
 author:     "PengTuo"
 catalog:    true
 header-img: "img/post-bg-hadoop-01.jpg"
+categories: 大数据研发
 tags:
-    - 大数据研发
     - Hadoop
+    - HDFS
 ---
 
+本文概览：
 * TOC
 {:toc}
 
