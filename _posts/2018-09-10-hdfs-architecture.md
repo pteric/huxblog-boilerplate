@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Hadoop入门（二）之 HDFS 详细解析"
+title:      "Hadoop 入门（二）之 HDFS 详细解析"
 subtitle:   "Hadoop 四大核心组件（一）"
 date:       2018-09-10
 author:     "PengTuo"
