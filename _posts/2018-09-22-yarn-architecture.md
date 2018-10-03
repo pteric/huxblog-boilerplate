@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Hadoop 入门（三）之 YARN 详细解析"
+title:      "Hadoop 学习系列（三）之 YARN 详细解析"
 subtitle:   "Hadoop 四大核心组件（二）"
 date:       2018-09-22
 author:     "PengTuo"
