@@ -2,7 +2,7 @@
 layout:     post
 title:      "50+ 精选数据结构和算法面试问题 【译】"
 subtitle:   "附带算法对应解答"
-date:       2018-10-02
+date:       2018-10-13
 author:     "PengTuo"
 catalog:    true
 header-img: "img/post-bg-algo-01.jpg"
