@@ -6,7 +6,7 @@ date:       2018-09-10
 author:     "PengTuo"
 catalog:    true
 header-img: "img/post-bg-hadoop-02.jpg"
-categories: 大数据研发
+categories: [Big Data]
 tags:
     - Hadoop
     - HDFS

@@ -6,7 +6,7 @@ date:       2018-10-02
 author:     "PengTuo"
 catalog:    true
 header-img: "img/post-bg-hadoop-04.jpg"
-categories: 大数据研发
+categories: [Big Data]
 tags:
     - Hadoop
     - MapReduce

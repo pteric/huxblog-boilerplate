@@ -6,7 +6,7 @@ date:       2018-10-13
 author:     "PengTuo"
 catalog:    true
 header-img: "img/post-bg-algo-01.jpg"
-categories: Algorithms
+categories: [Base Algorithms]
 tags:
     - Algorithms
 ---
