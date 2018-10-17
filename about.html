@@ -87,7 +87,7 @@ var gitalk = new Gitalk({
     repo: '{{site.gitalk.repo}}',
     owner: '{{site.gitalk.githubID}}',
     admin: '{{site.gitalk.adminUser}}',
-    id: md5(location.pathname),     
+    id: location.pathname,     
     distractionFreeMode: '{{site.gitalk.distractionFreeMode}}'
 })
 gitalk.render('gitalk_container')

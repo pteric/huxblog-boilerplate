@@ -12,6 +12,7 @@ layout: default
         background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')
     }
     .menu_line{ width:2px; background-image: url("../img/line.gif"); }
+    .has-jax {font: inherit; font-size: 100%; background: inherit; border: inherit;}
 </style>
 <header class="intro-header" >
     <div class="container">
@@ -104,7 +105,7 @@ var gitalk = new Gitalk({
     repo: '{{site.gitalk.repo}}',
     owner: '{{site.gitalk.githubID}}',
     admin: '{{site.gitalk.adminUser}}',
-    id: md5(location.pathname),   
+    id: location.pathname,   
     distractionFreeMode: '{{site.gitalk.distractionFreeMode}}'
 })
 gitalk.render('gitalk_container')
