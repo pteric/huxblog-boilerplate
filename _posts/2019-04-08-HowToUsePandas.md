@@ -31,12 +31,8 @@ import pandas as pd
 读 `CSV` 文件或者 `EXCEL` 文件
 
 函数文档解释：
-```python
-pandas.read_csv(filepath_or_buffer, sep=', ', delimiter=None, header='infer', names=None, index_col=None, usecols=None, squeeze=False, prefix=None, mangle_dupe_cols=True, dtype=None, engine=None, converters=None, true_values=None, false_values=None, skipinitialspace=False, skiprows=None, nrows=None, na_values=None, keep_default_na=True, na_filter=True, verbose=False, skip_blank_lines=True, parse_dates=False, infer_datetime_format=False, keep_date_col=False, date_parser=None, dayfirst=False, iterator=False, chunksize=None, compression='infer', thousands=None, decimal=b'.', lineterminator=None, quotechar='"', quoting=0, escapechar=None, comment=None, encoding=None, dialect=None, tupleize_cols=None, error_bad_lines=True, warn_bad_lines=True, skipfooter=0, doublequote=True, delim_whitespace=False, low_memory=True, memory_map=False, float_precision=None)
+![](https://live.staticflickr.com/7850/46840331314_66cecfc934_o.png)
 
-
-pandas.read_excel(io, sheet_name=0, header=0, names=None, index_col=None, usecols=None, squeeze=False, dtype=None, engine=None, converters=None, true_values=None, false_values=None, skiprows=None, nrows=None, na_values=None, parse_dates=False, date_parser=None, thousands=None, comment=None, skipfooter=0, convert_float=True, **kwds)
-```
 
 使用方法：
 ```python
@@ -52,9 +48,7 @@ data = pd.read_excel('tmp.xlsx', index_col=None, header=None)
 将数据写入 `CSV` 文件：
 
 函数文档解释：
-```python
-DataFrame.to_csv(path_or_buf=None, sep=', ', na_rep='', float_format=None, columns=None, header=True, index=True, index_label=None, mode='w', encoding=None, compression=None, quoting=None, quotechar='"', line_terminator='\n', chunksize=None, tupleize_cols=None, date_format=None, doublequote=True, escapechar=None, decimal='.')
-```
+![](https://live.staticflickr.com/7901/47511202582_f6823059ed_o.png)
 
 使用方法：
 ```python
@@ -157,9 +151,7 @@ data.corr().applymap(lambda x: int(x*100)/100)
 将两个 `DataFrame` 根据其中的某些列合并。
 
 函数文档解释：
-```python
-DataFrame.merge(right, how='inner', on=None, left_on=None, right_on=None, left_index=False, right_index=False, sort=False, suffixes=('_x', '_y'), copy=True, indicator=False, validate=None)
-```
+![](https://live.staticflickr.com/7827/47511207002_472c349324_o.png)
 
 其中参数 `how` 的解释解释如下：
 ```
@@ -180,6 +172,7 @@ A.merge(B, left_on='lkey', right_on='rkey', how='outer')
 ### 3.5. Grouping
 
 这个方法也使用很多，将数据根据某一列进行聚合，然后对聚合后的数据进行操作。
+![](https://live.staticflickr.com/7870/46648670155_4d897338ec_o.png)
 
 ```python
 # 数据根据 column_1 聚合，然后对 column_2 列值进行求和操作，.reset_index() 是将结果重新显示为一个 `DataFrame`
@@ -246,6 +239,6 @@ df[['col_1','col_2','col_3','col_4','col_5']] = df[['col_1','col_2','col_3','col
 
 
 ## 五、参考
-[1] https://towardsdatascience.com/be-a-more-efficient-data-scientist-today-master-pandas-with-this-guide-ea362d27386
+[1] [https://towardsdatascience.com/be-a-more-efficient-data-scientist-today-master-pandas-with-this-guide-ea362d27386](https://towardsdatascience.com/be-a-more-efficient-data-scientist-today-master-pandas-with-this-guide-ea362d27386)
 
-[2] https://towardsdatascience.com/why-and-how-to-use-pandas-with-large-data-9594dda2ea4c
+[2] [https://towardsdatascience.com/why-and-how-to-use-pandas-with-large-data-9594dda2ea4c](https://towardsdatascience.com/why-and-how-to-use-pandas-with-large-data-9594dda2ea4c)
