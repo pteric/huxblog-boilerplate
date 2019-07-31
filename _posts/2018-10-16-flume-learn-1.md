@@ -27,7 +27,7 @@ tags: Flume
 
 `Flume` 的数据流通路径如图：
 
-![](http://omqlv3air.bkt.clouddn.com/blog/2018-10-13-flume.png)
+![](https://live.staticflickr.com/65535/48420208276_937a33a653_o.png)
 
 其大体模块分为三个部分，分别是 `Source`(源端)、`Channel`(通道) 以及 `Sink`(接收器)。细分则还有 `Interceptor`(数据拦截器，位于 `Source` 与 `Channel` 之间)，`Channel Selector`(通道选择器，当有多个通道时，可通过配置确定数据的流向)，`Sink Processor`(处理器，位于 `Channel` 与 `Sink` 之间) 以及 `Serialization`(序列化，处于和 `Sink` 同样的位置)。
 
@@ -37,7 +37,7 @@ tags: Flume
 
 `Flume` 中的数据流单位是 `event`，包含 `header` 和 `body` 两个部分，`header` 是 `map` 结构，可在其中以 `key-value` 的形式存放字符串属性集，`body` 则是字节流，用于存放数据的内容。如下图：
 
-![](http://omqlv3air.bkt.clouddn.com/blog/2018-10-13-879896-20170727200900586-2007125722.png)
+![](https://live.staticflickr.com/65535/48420210026_385c0109d7_o.png)
 
 #### 2.1.1 可靠性
 
