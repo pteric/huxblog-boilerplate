@@ -44,7 +44,8 @@ MapReduce框架通常由三个操作（或步骤）组成：
 3. **`Reduce`**：工作节点现在并行处理每个键的每组输出数据。
 
 MapReduce 流程图：
-![](http://omqlv3air.bkt.clouddn.com/blog/2018-10-03-23175247-1cff38de2f154503bccd89a5d057f696.png)
+
+![](https://live.staticflickr.com/65535/48420493662_c1d8e44a70_o.png)
 
 `MapReduce` 允许分布式运行 `Map` 操作，只要每个 `Map` 操作独立于其他 `Map` 操作就可以并行执行。
 
@@ -88,7 +89,8 @@ Reduce(k2, list (v2)) → list(v3)
 具有多个分割总是有好处的，因为与处理整个输入所花费的时间相比，处理分割所花费的时间很短。当分割较小时，可以更好的处理负载平衡，但是分割也不宜太小，如果过小，则会使得管理拆分和任务加载的时间在总运行时间中占过高的比重。
 
 下图是 `map` 任务和 `reduce` 任务的示意图：
-![](http://omqlv3air.bkt.clouddn.com/blog/2018-10-02-blog2010112419481448.png)
+
+![](https://live.staticflickr.com/65535/48420333481_c2352fd2ce_o.png)
 
 ## 三、WordCount Example
 这里给出一个统计词频案例的 Java 代码：
@@ -176,7 +178,7 @@ hadoop jar hadoop-mapreduce-wordcount.jar WordCount /sample/input /sample/output
 
 上述代码示意图：
 
-![](http://omqlv3air.bkt.clouddn.com/blog/2018-10-02-Word-count-program-flow-executed-with-MapReduce-5.png)
+![](https://live.staticflickr.com/65535/48420489057_f166e64078_o.png)
 
 > Map -> Shuffle -> Reduce 的中间结果，包括最后的输出都是存储在本地磁盘上。
 
