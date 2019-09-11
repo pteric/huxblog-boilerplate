@@ -8,7 +8,7 @@ catalog:    true
 header-img: "img/post-bg-go.jpg"
 categories: [Golang]
 tags:
-    - Go
+    - Golang
 ---
 
 本文概览：
@@ -108,11 +108,14 @@ var ERR_SHORT_BUFFER = errors.New("short buffer")
 var ERR_SHORT_WRITE = errors.New("short write")
 var ERR_UNEXPECTED_EOF = errors.New("unexpected EOF")
 ```
+
 4. **错误处理使用defer**
+
+
 5. **当上层函数不关心错误时，建议不返回error**
 
 ##  Go 中的异常处理
-Go 中引入两个内置函数 panic 和 recover 来触发和终止异常处理流程，同时引入关键字 defer 来延迟执行 defer 后面的函数。如果在deferred函数中调用了内置函数recover，并且定义该defer语句的函数发生了panic异常，recover会使程序从panic中恢复，并返回panic value。导致panic异常的函数不会继续运行，但能正常返回。在未发生panic时调用recover，recover会返回nil。
+Go 中引入两个内置函数 panic 和 recover 来触发和终止异常处理流程，同时引入关键字 defer 来延迟执行 defer 后面的函数。如果在 defer 函数中调用了内置函数 recover，并且定义该 defer 语句的函数发生了 panic 异常，recover 会使程序从 panic 中恢复，并返回 panic value。导致 panic 异常的函数不会继续运行，但能正常返回。在未发生 panic 时调用 recover，recover 会返回 nil。
 
 由于 panic 会引起程序的崩溃，因此 panic 一般用于严重错误，如程序内部的逻辑不一致。对于大部分漏洞，我们应该使用 Go 提供的错误机制，而不是 panic，尽量避免程序的崩溃。
 
@@ -124,15 +127,18 @@ Go 中引入两个内置函数 panic 和 recover 来触发和终止异常处理�
 
 一般使用异常的场景有：
 1. **在程序开发阶段，坚持速错**：在早期开发以及任何发布阶段之前，最简单的同时也可能是最好的方法是调用panic函数来中断程序的执行以强制发生错误，使得该错误不会被忽略，因而能够被尽快修复。
-我们在调用recover的延迟函数中以最合理的方式响应该异常：
-a. 打印堆栈的异常调用信息和关键的业务信息，以便这些问题保留可见；
-b. 将异常转换为错误，以便调用者让程序恢复到健康状态并继续安全运行。
+
+>我们在调用recover的延迟函数中以最合理的方式响应异常：
+> a. 打印堆栈的异常调用信息和关键的业务信息，以便这些问题保留可见；
+> b. 将异常转换为错误，以便调用者让程序恢复到健康状态并继续安全运行。
+
 2. **在程序部署后，应恢复异常避免程序终止**
 3. **对于不应该出现的分支，使用异常处理**
 4. **针对入参不应该有问题的函数，使用panic设计**
 5. **一些常见问题**：空指针引用，下标越界，除数为0 等
 
 > 此外
+
 抛开 Go 语言，从研发的角度来说处理异常也应该做到以下几点：
 1. 不要随便 re-throw
 就是 catch 错误再抛出，原因是异常的第一现场会被破坏，堆栈跟踪信息会丢失，因为外部最后拿到异常的堆栈跟踪信息，是最后那次throw的异常的堆栈跟踪信息。
