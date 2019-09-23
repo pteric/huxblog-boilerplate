@@ -15,6 +15,8 @@ tags:
 * TOC
 {:toc}
 
+> 首先给大家推荐一个在线 Golang 运行环境，可以测试剪短的代码逻辑。https://play.studygolang.com
+
 Golang 中的反射是基于类型（type）机制的，所以需要重温一下 Golang 中的类型机制。
 
 ## 一、Types and interfaces
