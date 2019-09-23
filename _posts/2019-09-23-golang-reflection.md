@@ -15,11 +15,11 @@ tags:
 * TOC
 {:toc}
 
-> 首先给大家推荐一个在线 Golang 运行环境，可以测试剪短的代码逻辑。https://play.studygolang.com
+> 首先给大家推荐一个在线 `Golang` 运行环境，可以测试简短的代码逻辑。[https://play.studygolang.com](https://play.studygolang.com)
 
-Golang 中的反射是基于类型（type）机制的，所以需要重温一下 Golang 中的类型机制。
+Golang 中的反射是基于类型（`type`）机制的，所以需要重温一下 `Golang` 中的类型机制。
 
-## 一、Types and interfaces
+## 1. Types and interfaces
 Go 是静态类型语言。 每个变量都有一个静态类型，也就是在编译时已知并固定的一种类型：`int，float32，*MyType，[]byte` 等。 如果我们声明：
 ```go
 type MyInt int
@@ -27,7 +27,7 @@ type MyInt int
 var i int
 var j MyInt
 ```
-则变量 i 是 int 类型，变量 j 是 MyInt 类型。变量 i 和 j 具有不同的静态类型，尽管它们具有相同的基础类型，但是如果不进行转换依然无法将其中一个变量赋值于另一个变量。
+则变量 `i` 是 `int` 类型，变量 `j` 是 `MyInt` 类型。变量 `i` 和 `j` 具有不同的静态类型，尽管它们具有相同的基础类型，但是如果不进行转换依然无法将其中一个变量赋值于另一个变量。
 
 Go 中一个重要的类别是接口类型（interface），接口表示固定的方法集。接口变量可以存储任何具体的（非接口）值，只要该值实现了接口中所有定义的方法即可。 一个重要的例子就是`io.Reader`与`io.Writer`， 类型 `Reader` 与 `Writer` 都来自 [io - The Go Programming Language](https://golang.org/pkg/io/) 包
 ```go
@@ -59,10 +59,7 @@ interface{}
 
 有人说 `Go` 的空接口是动态类型的，但这会产生误导。它们是静态类型的：接口类型的变量始终具有相同的静态类型，即使在运行时存储在接口变量中的值可能会更改类型，但该值也还是始终满足接口的要求。
 
-而之所以先重温接口就是因为反射和接口息息相关
-
-
-## 二、The representation of an interface
+## 2. he representation of an interface
 接口类型的变量存储一对儿信息，分别是分配给该变量的具体值以及该值的类型描述符。
 例如：
 ```go
@@ -81,11 +78,13 @@ w = r.(io.Writer)
 这个赋值操作中的表达式是类型断言。它断言 `r` 内的项也实现了 `io.Writer`，因此我们可以将其分配给接口变量 `w`。赋值后，`w` 也同样包含一对信息 —— `(tty，* os.File)`。接口的静态类型会决定使用接口变量调用哪些方法，即使内部的具体值可能具有更大的方法集。
 
 强调一遍，在一个接口变量中一直都是保存一对信息，格式为 `(value, concrete type)`，但是不能保存 `(value, interface type)` 格式。
-> 在 Go 语言中，变量类型分为两大类，`concrete type` 与 `interface type`：
-> 		concrete type: 指具体的变量类型，可以是基本类型，也可以是自定义类型或者结构体类型；
-> 		interface type: 指接口类型，可以是 Golang 内置的接口类型，或者是使用者自定义的接口类型； 
+> 在 Go 语言中，变量类型分为两大类，`concrete type` 与 `interface type`{
+> concrete type: 指具体的变量类型，可以是基本类型，也可以是自定义类型或者结构体类型；
+> interface type: 指接口类型，可以是 Golang 内置的接口类型，或者是使用者自定义的接口类型；} 
 
-## 三、关于反射
+而之所以先重温接口就是因为反射和接口息息相关
+
+## 3. 关于反射
 ### 3.1. Reflection goes from interface value to reflection object.
 从底层层面来说，反射一种解释存储在接口类型变量中的 `(type, value)` 对的机制。首先，我们需要在反射包中了解两种类型：`type` 和 `value`，通过这两种类型对接口变量内容的访问，还有两个对应的函数，称为 `reflect.TypeOf` 和`reflect.ValueOf`，从接口值中获取 `reflect.Type` 和 `reflect.Value` 部分。 
 例如 `TypeOf`：
@@ -109,7 +108,7 @@ type: float64
 value: 3.4
 ```
 说明：
-- reflect.TypeOf：获得值的类型（`type`），如 float64、int、pointer、struct 等等真实的类型；
+- reflect.TypeOf：获得值的类型（`type`），如 `float64、int、pointer、struct` 等等真实的类型；
 - reflect.ValueOf：获得值的内容，如1.2345这个具体数值，或者类似 `&{1 “Allen.Wu” 25}` 这样的结构体 struct 的内容；
 - 说明反射可以将“接口类型变量”转换为“反射类型对象”，反射类型指的是 `reflect.Type` 和 `reflect.Value` 这两个函数的返回；
 
@@ -131,11 +130,11 @@ value: 3.4
 value: <float64 Value>
 ```
 
-`reflect.Type` 和 `reflect.Value` 都有很多方法可以让我们检查和操作它们。 一个重要的例子是 `Value` 具有 `Type` 方法，该方法返回 `reflect.Value` 的 `Type`。另一个是 `Type` 和 `Value` 都有 `Kind` 方法，该方法返回一个常量，指示存储的项目类型：Uint，Float64，Slice等。
+`reflect.Type` 和 `reflect.Value` 都有很多方法可以让我们检查和操作它们。 一个重要的例子是 `Value` 具有 `Type` 方法，该方法返回 `reflect.Value` 的 `Type`。另一个是 `Type` 和 `Value` 都有 `Kind` 方法，该方法返回一个常量，指示存储的项目类型：`Uint，Float64，Slice` 等。
 
 反射库具有几个值得一提的属性。 
 
-首先，为使 API 保持简单，Value 的 “getter” 和 “setter” 方法在可以容纳该值的最大类型上运行：例如，所有有符号整数的 int64。 也就是说，Value 的 Int 方法返回一个 int64，而 SetInt 值采用一个 int64； 可能需要转换为涉及的实际类型：
+首先，为使 API 保持简单，`Value` 的 `“getter”` 和 `“setter”` 方法在可以容纳该值的最大类型上运行：例如，所有有符号整数的 `int64`。也就是说，`Value` 的 `Int` 方法返回一个 `int64`，而 `SetInt` 值采用一个 `int64`，可能需要转换为涉及的实际类型：
 ```go
 var x uint8 = 'x'
 v := reflect.ValueOf(x)
@@ -170,7 +169,7 @@ int
 ### 3.2. Reflection goes from reflection object to interface value.
 Golang 的反射也有其逆向过程。
 
-给定一个 `reflect.Value` ，我们可以使用 `Interface()` 方法恢复接口值，该方法将 type 和 value 信息打包回接口表示形式并返回结果：
+给定一个 `reflect.Value` ，我们可以使用 `Interface()` 方法恢复接口值，该方法将 `type` 和 `value` 信息打包回接口表示形式并返回结果：
 ```go
 // Interface returns v's value as an interface{}.
 func (v Value) Interface() interface{}
@@ -191,7 +190,7 @@ func main() {
 float64
 ```
 
-简而言之，Interface方法与ValueOf函数相反，但其结果始终是静态类型 `interface{}`。
+简而言之，`Interface` 方法与 `ValueOf` 函数相反，但其结果始终是静态类型 `interface{}`。
 
 所以综上述两点可得知，Golang 中的反射可理解为包含两个过程，一个是接口值到反射对象的过程，另一个则是反向的反射对象到接口值的过程。
 
@@ -278,13 +277,13 @@ fmt.Println("t is now", t)
 // output is "t is now {77 Sunset Strip}"
 ```
 
-## 四、总结
+## 4. Conclusion
 反射的三条规律：
 - 反射包括从接口值到反射对象的过程；
 - 反射也包括从反射对象到接口值的过程；
 - 要修改反射对象，该值必须可设置（`To modify a reflection object, the value must be settable.`）。
 
 
-### 【参考文献】
+**参考文献**
 - [research!rsc: Go Data Structures: Interfaces](https://research.swtch.com/interfaces)
 - [The Laws of Reflection - The Go Blog](https://blog.golang.org/laws-of-reflection)
