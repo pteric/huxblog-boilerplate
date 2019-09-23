@@ -286,8 +286,5 @@ fmt.Println("t is now", t)
 
 
 ### 【参考文献】
-[research!rsc: Go Data Structures: Interfaces](https://research.swtch.com/interfaces)
-[The Laws of Reflection - The Go Blog](https://blog.golang.org/laws-of-reflection)
-
-
-#Golang
+- [research!rsc: Go Data Structures: Interfaces](https://research.swtch.com/interfaces)
+- [The Laws of Reflection - The Go Blog](https://blog.golang.org/laws-of-reflection)
