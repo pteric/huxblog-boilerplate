@@ -59,7 +59,7 @@ interface{}
 
 有人说 `Go` 的空接口是动态类型的，但这会产生误导。它们是静态类型的：接口类型的变量始终具有相同的静态类型，即使在运行时存储在接口变量中的值可能会更改类型，但该值也还是始终满足接口的要求。
 
-## 2. he representation of an interface
+## 2. The representation of an interface
 接口类型的变量存储一对儿信息，分别是分配给该变量的具体值以及该值的类型描述符。
 例如：
 ```go
@@ -84,7 +84,7 @@ w = r.(io.Writer)
 
 而之所以先重温接口就是因为反射和接口息息相关
 
-## 3. 关于反射
+## 3. Three law of reflection
 ### 3.1. Reflection goes from interface value to reflection object.
 从底层层面来说，反射一种解释存储在接口类型变量中的 `(type, value)` 对的机制。首先，我们需要在反射包中了解两种类型：`type` 和 `value`，通过这两种类型对接口变量内容的访问，还有两个对应的函数，称为 `reflect.TypeOf` 和`reflect.ValueOf`，从接口值中获取 `reflect.Type` 和 `reflect.Value` 部分。 
 例如 `TypeOf`：
@@ -268,6 +268,7 @@ for i := 0; i < s.NumField(); i++ {
 1: B string = skidoo
 ```
 > 这里有一点要注意的是，结构体 `T` 的字段名首字母都是大写，在 Go 中首字母大写的变量或者函数才是可导出的（exported），相当于 Java 中的 `public`，而首字母小写的变量或者函数则是包外不可使用，对应 Java 的 `protected`。 而只有可导出的结构体字段此方式才能修改。
+
 现在我们可以试着修改结构体 `T`：
 ```go
 s.Field(0).SetInt(77)
