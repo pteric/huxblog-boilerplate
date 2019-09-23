@@ -92,12 +92,12 @@ featured-condition-size: 1              # A tag will be featured if the size of 
 # Friends
 friends: [
     {
-        title: "Tony Bai(Golang)",
+        title: "Tony Bai (Golang)",
         href: "https://tonybai.com/articles/"
     },
     {
-        title: "Hux",
-        href: "http://huangxuan.me"
+        title: "Draveness's Blog (Golang)",
+        href: "https://draveness.me"
     },
     {
         title: "asdfv1929",
