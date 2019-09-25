@@ -86,7 +86,7 @@ w = r.(io.Writer)
 
 ## 3. Three law of reflection
 ### 3.1. Reflection goes from interface value to reflection object.
-从底层层面来说，反射一种解释存储在接口类型变量中的 `(type, value)` 对的机制。首先，我们需要在反射包中了解两种类型：`type` 和 `value`，通过这两种类型对接口变量内容的访问，还有两个对应的函数，称为 `reflect.TypeOf` 和`reflect.ValueOf`，从接口值中获取 `reflect.Type` 和 `reflect.Value` 部分。 
+从底层层面来说，反射是一种解释存储在接口类型变量中的 `(type, value)` 一对信息的机制。首先，我们需要在反射包中了解两种类型：`type` 和 `value`，通过这两种类型对接口变量内容的访问，还有两个对应的函数，称为 `reflect.TypeOf` 和`reflect.ValueOf`，从接口值中获取 `reflect.Type` 和 `reflect.Value` 部分。 
 例如 `TypeOf`：
 ```go
 package main
@@ -201,7 +201,7 @@ var x float64 = 3.4
 v := reflect.ValueOf(x)
 v.SetFloat(7.1) // Error: will panic.
 ```
-如果允许上述这个代码，则会报错提示:
+如果运行上述这个代码，则会报错提示:
 ```go
 panic: reflect: reflect.Value.SetFloat using unaddressable value
 ```
