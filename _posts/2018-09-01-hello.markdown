@@ -1,9 +1,9 @@
 ---
 layout:     post
-title:      "Welcome to PeTu Blog"
+title:      "Welcome to MilkBeer Blog"
 subtitle:   " \"Hello World, Hello Blog\""
 date:       2018-09-02
-author:     "PeTu"
+author:     "PengTuo"
 catalog:    true
 header-img: "img/post-bg-2015.jpg"
 categories: Life
@@ -18,7 +18,7 @@ tags:
 
 ## Hello
 
-大家好，欢迎来到 PeTu 的博客。
+大家好，欢迎来到 MilkBeer 的博客。
 
 本人从一年前就想有一个可以展示自己文章以及个性的个人博客网站，先前曾用 `PHP` 的后端框架 [Laravel](https://laravel.com) + 拼凑的前端主题实现了第一个个人博客网站，前后端全部由本人独自完成，但是因为技术有限，不太满意最后的效果，用了小半年就抛弃了。
 
