@@ -1,23 +1,23 @@
 ---
 layout:     post
-title:      "如何理解 Golang 中的反射"
+title:      "如何理解 Go 中的反射"
 subtitle:   "The Laws of Reflection"
 date:       2019-09-23
 author:     "PengTuo"
 catalog:    true
 header-img: "img/post-bg-hadoop-01.jpg"
-categories: [Golang]
+categories: [Go]
 tags:
-    - Golang
+    - Go
 ---
 
 本文概览：
 * TOC
 {:toc}
 
-> 首先给大家推荐一个在线 `Golang` 运行环境，可以测试简短的代码逻辑。[https://play.studygolang.com](https://play.studygolang.com)
+> 首先给大家推荐一个在线 `Go` 运行环境，可以测试简短的代码逻辑。[https://play.studygolang.com](https://play.studygolang.com)
 
-Golang 中的反射是基于类型（`type`）机制的，所以需要重温一下 `Golang` 中的类型机制。
+Go 中的反射是基于类型（`type`）机制的，所以需要重温一下 `Go` 中的类型机制。
 
 ## 1. Types and interfaces
 Go 是静态类型语言。 每个变量都有一个静态类型，也就是在编译时已知并固定的一种类型：`int，float32，*MyType，[]byte` 等。 如果我们声明：
@@ -80,13 +80,13 @@ w = r.(io.Writer)
 强调一遍，在一个接口变量中一直都是保存一对信息，格式为 `(value, concrete type)`，但是不能保存 `(value, interface type)` 格式。
 > 在 Go 语言中，变量类型分为两大类，`concrete type` 与 `interface type`{
 > concrete type: 指具体的变量类型，可以是基本类型，也可以是自定义类型或者结构体类型；
-> interface type: 指接口类型，可以是 Golang 内置的接口类型，或者是使用者自定义的接口类型；} 
+> interface type: 指接口类型，可以是 Go 内置的接口类型，或者是使用者自定义的接口类型；}
 
 而之所以先重温接口就是因为反射和接口息息相关
 
 ## 3. Three law of reflection
 ### 3.1. Reflection goes from interface value to reflection object.
-从底层层面来说，反射是一种解释存储在接口类型变量中的 `(type, value)` 一对信息的机制。首先，我们需要在反射包中了解两种类型：`type` 和 `value`，通过这两种类型对接口变量内容的访问，还有两个对应的函数，称为 `reflect.TypeOf` 和`reflect.ValueOf`，从接口值中获取 `reflect.Type` 和 `reflect.Value` 部分。 
+从底层层面来说，反射是一种解释存储在接口类型变量中的 `(type, value)` 一对信息的机制。首先，我们需要在反射包中了解两种类型：`type` 和 `value`，通过这两种类型对接口变量内容的访问，还有两个对应的函数，称为 `reflect.TypeOf` 和`reflect.ValueOf`，从接口值中获取 `reflect.Type` 和 `reflect.Value` 部分。
 例如 `TypeOf`：
 ```go
 package main
@@ -132,7 +132,7 @@ value: <float64 Value>
 
 `reflect.Type` 和 `reflect.Value` 都有很多方法可以让我们检查和操作它们。 一个重要的例子是 `Value` 具有 `Type` 方法，该方法返回 `reflect.Value` 的 `Type`。另一个是 `Type` 和 `Value` 都有 `Kind` 方法，该方法返回一个常量，指示存储的项目类型：`Uint，Float64，Slice` 等。
 
-反射库具有几个值得一提的属性。 
+反射库具有几个值得一提的属性。
 
 首先，为使 API 保持简单，`Value` 的 `“getter”` 和 `“setter”` 方法在可以容纳该值的最大类型上运行：例如，所有有符号整数的 `int64`。也就是说，`Value` 的 `Int` 方法返回一个 `int64`，而 `SetInt` 值采用一个 `int64`，可能需要转换为涉及的实际类型：
 ```go
@@ -140,7 +140,7 @@ var x uint8 = 'x'
 v := reflect.ValueOf(x)
 fmt.Println("type:", v.Type())                            // uint8.
 fmt.Println("kind is uint8: ", v.Kind() == reflect.Uint8) // true.
-x = uint8(v.Uint())     
+x = uint8(v.Uint())
 ```
 
 第二个属性是反射对象的 `Kind()` 方法描述基础类型，而不是静态类型。例如：
@@ -167,7 +167,7 @@ int
 ```
 
 ### 3.2. Reflection goes from reflection object to interface value.
-Golang 的反射也有其逆向过程。
+Go 的反射也有其逆向过程。
 
 给定一个 `reflect.Value` ，我们可以使用 `Interface()` 方法恢复接口值，该方法将 `type` 和 `value` 信息打包回接口表示形式并返回结果：
 ```go
@@ -192,7 +192,7 @@ float64
 
 简而言之，`Interface` 方法与 `ValueOf` 函数相反，但其结果始终是静态类型 `interface{}`。
 
-所以综上述两点可得知，Golang 中的反射可理解为包含两个过程，一个是接口值到反射对象的过程，另一个则是反向的反射对象到接口值的过程。
+所以综上述两点可得知，Go 中的反射可理解为包含两个过程，一个是接口值到反射对象的过程，另一个则是反向的反射对象到接口值的过程。
 
 ### 3.3. To modify a reflection object, the value must be settable.
 第三条规律则是如果想要修改一个反射对象（`reflection object`），那么这个对象的值必须是**可设置的**。直接这样说会比较困惑，从例子出发：
@@ -216,7 +216,7 @@ fmt.Println("settability of v:", v.CanSet())
 settability of v: false
 ```
 
-那么什么是可设置的呢，在 Golang 官网原文有这么一句
+那么什么是可设置的呢，在 Go 官网原文有这么一句
 
 > Settability is determined by whether the reflection object holds the original item.
 

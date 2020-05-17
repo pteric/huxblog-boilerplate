@@ -1,21 +1,21 @@
 ---
 layout:     post
 title:      "Go 中的错误与异常"
-subtitle:   "The error & exception in Golang"
+subtitle:   "The error & exception in Go"
 date:       2019-09-11
 author:     "PengTuo"
 catalog:    true
 header-img: "img/post-bg-go.jpg"
-categories: [Golang]
+categories: [Go]
 tags:
-    - Golang
+    - Go
 ---
 
 本文概览：
 * TOC
 {:toc}
 
- 
+
 在 Go 语言中，错误和异常从语言机制上面讲，就是 error 和 panic 的区别，放到别的语言也一样，别的语言没有 error 类型，但是有错误码之类的，没有panic，但是有 throw 之类的。
 
 在语言层面它们是两种概念，错误指的是可能出现问题的地方出现了问题，比如打开一个文件时失败，这种情况在人们的意料之中；而异常指的是不应该出现问题的地方出现了问题，比如引用了空指针，这种情况在人们的意料之外。导致的是两种不同的结果。如果程序遇到错误不处理，那么可能进一步的产生业务上的错误；如果程序遇到异常不处理，那么结果就是进程异常退出。可以理解错误是业务过程的一部分，异常不是。

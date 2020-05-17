@@ -92,11 +92,11 @@ featured-condition-size: 1              # A tag will be featured if the size of 
 # Friends
 friends: [
     {
-        title: "Tony Bai (Golang)",
+        title: "Tony Bai (Go)",
         href: "https://tonybai.com/articles/"
     },
     {
-        title: "Draveness's Blog (Golang)",
+        title: "Draveness's Blog (Go)",
         href: "https://draveness.me"
     },
     {
@@ -106,6 +106,14 @@ friends: [
     {
         title: "Moshi",
         href: "https://liujunzhou.cn"
+    },
+    {
+        title: "Gopherzhang",
+        href: "https://driverzhang.github.io"
+    },
+    {
+        title: "煎鱼Go",
+        href: "https://eddycjy.com/posts/"
     }
 ]
 
