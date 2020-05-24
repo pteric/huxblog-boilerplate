@@ -8,7 +8,7 @@ catalog:    true
 header-img: "img/post-bg-hadoop-01.jpg"
 categories: [Design Pattern]
 tags:
-    - Design Pattern
+    - 设计模式
     - Go
 ---
 

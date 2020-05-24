@@ -6,9 +6,9 @@ date:       2020-05-17
 author:     "PengTuo"
 catalog:    true
 header-img: "img/home-bg-tmp.jpg"
-categories: [Go]
+categories: [Distributed System]
 tags:
-    - Go
+    - 分布式
 ---
 
 本文概览：
