@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "1分钟阅读系列--Understanding nil in Go"
+title:      "1 分钟阅读系列--Understanding nil in Go"
 subtitle:   "Understanding nil in Go"
 date:       2020-06-08
 author:     "PengTuo"
@@ -12,13 +12,13 @@ tags:
     - Go
 ---
 
-在 Go 语言中，`nil` 表示零值（zero value），Go 语言中的每个类型的都有零值，`int` 类型的零值是 0，`float` 类型的零值是 0.0，`boolean` 类型的零值是 false，`string` 类型的零值是 空字符串 `""`，而其他类型，诸如 `pointer`、`slice`、`map`、`channel`、`function`、`interface` 等类型的零值则是 nil。
+在 Go 语言中，`nil` 表示零值（zero value），Go 语言中的每个类型的都有零值，`int` 类型的零值是 0，`float` 类型的零值是 0.0，`boolean` 类型的零值是 false，`string` 类型的零值是空字符串 `""`，而其他类型，诸如 `pointer`、`slice`、`map`、`channel`、`function`、`interface` 等类型的零值则是 nil。
 
 > nil is a predeclared identifier representing the zero value for a pointer, channel, func, interface, map, or slice type.
 
 ![各种类型的零值](https://live.staticflickr.com/65535/49983958898_dec2575939_o.png)
 
-而对于一个结构体来说，零值则其成员的零值，例如：
+而对于一个结构体来说，零值则是其成员的零值，例如：
 
 ```go
 type Person struct {
@@ -32,9 +32,9 @@ var p Person
 
 那么变量 `p` 的零值则是 `Person{0, "", nil}`。
 
-虽然 nil 对于不同类型来说表达的都是零值，但是具体情况是不尽相同：对于 `pointer` 指针类型，nil 表示给指针不指向任何变量；而 `slice` 切片类型包含三个部分，即 `{ptr, len, cap}`，分别表示「指向底层数组的指针，切片长度，切片容量」，所以 slice 切片类型的零值更深层次则是 {nil, 0, 0}，但是在代码层面依然可以用 `s == nil` 进行判断；
+虽然 nil 对于不同类型来说表达的都是零值，但是具体情况是不尽相同：对于 `pointer` 指针类型，nil 表示给指针不指向任何变量；而 `slice` 切片类型包含三个部分，即 `{ptr, len, cap}`，分别表示「指向底层数组的指针，切片长度，切片容量」，所以 slice 切片类型的零值更深层次则是 {nil, 0, 0}，但是在代码层面依然可以用 `s == nil` 进行判断。
 
-对于 `interface` 接口类型，事情则会变得更加复杂一些。首先一个 interface 类型变量由两部分组成：类型以及具体值，即 `(type, value)`，例如：
+对于 `interface` 接口类型，事情则会变得更加复杂一些。首先一个 interface 类型变量由两部分组成：**类型** 以及 **值**，即 `(type, value)`，例如：
 
 ```go
 var s fmt.Stringer     // Stringer(nil, nil)
