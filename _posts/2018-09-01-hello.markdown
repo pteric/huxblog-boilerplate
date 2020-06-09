@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Welcome to MilkBeer Blog"
+title:      "Welcome to MilkBeer's Blog"
 subtitle:   " \"Hello World, Hello Blog\""
 date:       2018-09-02
 author:     "PengTuo"
